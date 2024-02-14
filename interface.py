@@ -1,6 +1,8 @@
-import printer, reader, creator, changer, writer
+import printer, reader, creator, changer, writer, remover
 
 command = 0
+notes_dict = reader.read_notes()
+#max_id = 0 if len(notes_dict) == 0 else int(max(notes_dict.keys()))
 
 while command != '5':
     print('Меню пользователя\n'
@@ -16,21 +18,23 @@ while command != '5':
         print('Некорректный ввод пункта меню. Повторите ввод.')
         command = input('Выберете пункт меню: ')
 
-    notes_list = reader.read_notes()
-    max_id = 0 if len(notes_list) == 0 else int(max(notes_list.keys()))
-
     match command:
         case '1':
-            printer.print_notes(notes_list)
+            printer.print_notes(notes_dict)
         case '2':
-            creator.create_note(max_id)
-            max_id += 1
-            print('Новая заметка успешно добавлена.\n')
+            creator.create_note(notes_dict)
+            #max_id += 1
+            print('\nНовая заметка успешно добавлена.\n')
         case '3':
-            changer.change_note(notes_list)
-            writer.write_notes(notes_list)
+            changer.change_note(notes_dict)
+            #writer.write_notes(notes_dict)
             print('Заметка успешно изменена\n')
         case '4':
-            print('4. Удалить заметку\n')
+            remover.remove_note(notes_dict)
+            #writer.write_notes(notes_dict)
+            print('Заметка успешно удалена\n')
         case '5':
+            writer.write_notes(notes_dict)
             print('Завершение работы программы.')
+
+# Для оптимизации и ускорения работы код "writer.write_notes(notes_dict)" в case 3 и 4 можно вынести в case 5

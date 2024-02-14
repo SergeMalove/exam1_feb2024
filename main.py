@@ -1,3 +1,3 @@
-import Note
+import note_interface
 
-n = Note.Note(1)
+note_interface.run()

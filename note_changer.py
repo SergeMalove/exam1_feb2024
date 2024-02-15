@@ -1,4 +1,4 @@
-import Note
+import note
 
 def change_note(notes_dict):
     key_list = notes_dict.keys()
@@ -10,6 +10,6 @@ def change_note(notes_dict):
         print('Записи с введенным id не существует.\n')
 
     print('Введите новые данные замены\n')
-    new_note = Note.Note(id)
+    new_note = note.Note(id)
     notes_dict[id] = [new_note.title, new_note.text, new_note.data]
 

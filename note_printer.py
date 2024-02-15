@@ -1,11 +1,9 @@
 def print_all(notes_dict):
+    print('Список всех заметок:\n')
     for id in notes_dict:
-        print(f'Номер заметки: {id}\n'
-              f'{notes_dict[id][0]}\n'
-              f'{notes_dict[id][1]}\n'
-              f'Дата время последнего изменения: {notes_dict[id][2]}\n')
+        print_note(id, notes_dict[id])
         
-def print_note(notes_dict):
+def print_one(notes_dict):
     key_list = notes_dict.keys()
     id = 0
     while (True):
@@ -14,7 +12,7 @@ def print_note(notes_dict):
             break
         print('Записи с введенным id не существует.\n')
 
-    print(f'Номер заметки: {id}\n'
-            f'{notes_dict[id][0]}\n'
-            f'{notes_dict[id][1]}\n'
-            f'Дата время последнего изменения: {notes_dict[id][2]}\n')
+    print_note(id, notes_dict[id])
+    
+def print_note(id, data):
+    print(f'Номер заметки: {id}\n{data[0]}\n{data[1]}\nДата время последнего изменения: {data[2]}\n')    

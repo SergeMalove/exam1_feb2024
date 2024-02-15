@@ -1,3 +1,6 @@
+def print_note(id, data):
+    print(f'Номер заметки: {id}\n{data[0]}\n{data[1]}\nДата время последнего изменения: {data[2]}\n')
+
 def print_all(notes_dict):
     print('Список всех заметок:\n')
     for id in notes_dict:
@@ -13,6 +16,15 @@ def print_one(notes_dict):
         print('Записи с введенным id не существует.\n')
 
     print_note(id, notes_dict[id])
+
+def print_by_date(notes_dict):
+    notes_list = []
     
-def print_note(id, data):
-    print(f'Номер заметки: {id}\n{data[0]}\n{data[1]}\nДата время последнего изменения: {data[2]}\n')    
+    for n in notes_dict:
+        notes_list.append(f'{notes_dict[n][2]} {n}')
+
+    notes_list.sort()
+
+    for i in range(len(notes_list)):
+        id = notes_list[i].split()[2]
+        print_note(id, notes_dict[id])

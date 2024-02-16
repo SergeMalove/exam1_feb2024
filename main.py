@@ -1,3 +1,3 @@
-import note_interface, note_reader, re, note, note_printer
+import note_interface
 
 note_interface.run()
